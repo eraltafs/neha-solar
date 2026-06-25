@@ -1,0 +1,102 @@
+"use client";
+
+import Link from "next/link";
+import { Menu, Phone, MessageCircle } from "lucide-react";
+
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+
+import { Button } from "@/components/ui/button";
+
+const links = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Contact", href: "/contact" },
+];
+
+export default function Navbar() {
+  return (
+    <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold text-green-700">
+          Neha Solar
+        </Link>
+
+        {/* Desktop Menu */}
+        <nav className="hidden items-center gap-8 md:flex">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium transition hover:text-green-600"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Desktop Buttons */}
+        <div className="hidden items-center gap-3 md:flex">
+
+          <Button variant="outline" size="sm">
+            <Phone className="mr-2 h-4 w-4" />
+            Call
+          </Button>
+
+          <Button
+            size="sm"
+            className="bg-green-600 hover:bg-green-700"
+          >
+            <MessageCircle className="mr-2 h-4 w-4" />
+            WhatsApp
+          </Button>
+
+        </div>
+
+        {/* Mobile Menu */}
+        <Sheet>
+
+        <SheetTrigger className="md:hidden">
+  <Menu className="h-6 w-6" />
+</SheetTrigger>
+
+          <SheetContent side="right">
+
+            <div className="mt-8 flex flex-col gap-6">
+
+              {links.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-lg font-medium"
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              <Button className="mt-4 bg-green-600">
+                <Phone className="mr-2 h-4 w-4" />
+                Call Now
+              </Button>
+
+              <Button variant="outline">
+                <MessageCircle className="mr-2 h-4 w-4" />
+                WhatsApp
+              </Button>
+
+            </div>
+
+          </SheetContent>
+
+        </Sheet>
+
+      </div>
+    </header>
+  );
+}
