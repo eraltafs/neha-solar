@@ -3,13 +3,10 @@
 import Link from "next/link";
 import { Menu, Phone, MessageCircle } from "lucide-react";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const links = [
   { name: "Home", href: "/" },
@@ -22,10 +19,21 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <Image
+            src="/logos/logo.png"
+            alt="Neha Solar Suppliers"
+            width={100}
+            height={100}
+            priority
+            className="h-12 w-12"
+          />
 
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-green-700">
-          Neha Solar
+          <div className="leading-tight">
+            <h1 className="text-xl font-bold text-green-700">
+              Neha Solar Suppliers
+            </h1>
+          </div>
         </Link>
 
         {/* Desktop Menu */}
@@ -42,34 +50,34 @@ export default function Navbar() {
         </nav>
 
         {/* Desktop Buttons */}
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
+          <a href={`tel:+919717838367`}>
+            <Button variant="outline" size="sm">
+              <Phone className="mr-1 h-4 w-4" />
+              Call
+            </Button>
+          </a>
 
-          <Button variant="outline" size="sm">
-            <Phone className="mr-2 h-4 w-4" />
-            Call
+            <a
+              href="https://wa.me/919717838367?text=Hi%20Neha%20Solar,%20I%20want%20to%20know%20about%20your%20solar%20products."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+          <Button size="sm" className="bg-green-600 hover:bg-green-700" asChild>
+              <MessageCircle className="mr-1 h-4 w-4" />
+              WhatsApp
           </Button>
-
-          <Button
-            size="sm"
-            className="bg-green-600 hover:bg-green-700"
-          >
-            <MessageCircle className="mr-2 h-4 w-4" />
-            WhatsApp
-          </Button>
-
+            </a>
         </div>
 
         {/* Mobile Menu */}
         <Sheet>
-
-        <SheetTrigger className="md:hidden">
-  <Menu className="h-6 w-6" />
-</SheetTrigger>
+          <SheetTrigger className="md:hidden">
+            <Menu className="h-6 w-6" />
+          </SheetTrigger>
 
           <SheetContent side="right">
-
             <div className="mt-8 flex flex-col gap-6">
-
               {links.map((link) => (
                 <Link
                   key={link.name}
@@ -89,13 +97,9 @@ export default function Navbar() {
                 <MessageCircle className="mr-2 h-4 w-4" />
                 WhatsApp
               </Button>
-
             </div>
-
           </SheetContent>
-
         </Sheet>
-
       </div>
     </header>
   );
