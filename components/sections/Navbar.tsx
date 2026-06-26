@@ -63,7 +63,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
             >
-          <Button size="sm" className="bg-green-600 hover:bg-green-700" asChild>
+          <Button size="sm" className="bg-green-600 hover:bg-green-700">
               <MessageCircle className="mr-1 h-4 w-4" />
               WhatsApp
           </Button>
