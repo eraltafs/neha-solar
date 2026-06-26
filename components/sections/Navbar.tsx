@@ -88,15 +88,24 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              <Button className="mt-4 bg-green-600">
-                <Phone className="mr-2 h-4 w-4" />
-                Call Now
-              </Button>
+<a href="tel:+919717838367" className="w-full">
+    <Button className="w-full bg-green-600 hover:bg-green-700">
+      <Phone className="mr-2 h-4 w-4" />
+      Call Now
+    </Button>
+  </a>
 
-              <Button variant="outline">
-                <MessageCircle className="mr-2 h-4 w-4" />
-                WhatsApp
-              </Button>
+  <a
+    href="https://wa.me/919717838367?text=Hi%20Neha%20Solar,%20I%20want%20to%20know%20about%20your%20solar%20products."
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-full"
+  >
+    <Button variant="outline" className="w-full">
+      <MessageCircle className="mr-2 h-4 w-4 text-green-600" />
+      WhatsApp
+    </Button>
+  </a>
             </div>
           </SheetContent>
         </Sheet>
