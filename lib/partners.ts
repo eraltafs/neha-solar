@@ -1,0 +1,34 @@
+export const partners = [
+    {
+      name: "Waaree",
+      logo: "/partners/waree.png",
+    },
+    {
+      name: "Adani Solar",
+      logo: "/partners/adani.svg",
+    },
+    {
+      name: "Tata Power Solar",
+      logo: "/partners/tata.svg",
+    },
+    {
+      name: "UTL Solar",
+      logo: "/partners/UTL.png",
+    },
+    {
+      name: "GoodWe",
+      logo: "/partners/goodwe.svg",
+    },
+    {
+      name: "Polycab",
+      logo: "/partners/polycab.png",
+    },
+    {
+      name: "Luminous",
+      logo: "/partners/luminous.png",
+    },
+    {
+      name: "Exide",
+      logo: "/partners/exide.png",
+    },
+  ];
