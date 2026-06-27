@@ -1,5 +1,5 @@
 
-// import Hero from "@/components/sections/Hero";
+import Hero from "@/components/sections/Hero";
 // import About from "@/components/sections/About";
 // import Services from "@/components/sections/Services";
 // import Products from "@/components/sections/Products";
@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <>
 
-      {/* <Hero />
-      <About />
+      <Hero />
+      {/* <About />
       <Services />
       <Products />
       <Footer /> */}

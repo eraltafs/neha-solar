@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { Menu, Phone, MessageCircle } from "lucide-react";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger,
+  SheetClose
+ } from "@/components/ui/sheet";
+
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
