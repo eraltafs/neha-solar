@@ -19,7 +19,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-900/60 to-green-900/30" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[700px] max-w-7xl items-center gap-14 px-6 py-20 lg:grid-cols-2">
+      <div className="relative mx-auto grid min-h-[620px] max-w-7xl items-center gap-14 px-6 pt-24 pb-20 lg:grid-cols-2">
 
         {/* Left Side */}
         <div className="text-white">
