@@ -5,11 +5,9 @@ export default function Partners() {
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
-
         {/* Heading */}
 
         <div className="mb-16 text-center">
-
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-green-600">
             Our Partners
           </span>
@@ -22,15 +20,12 @@ export default function Partners() {
             We deal with India's leading solar brands to deliver reliable,
             high-quality products and long-term performance.
           </p>
-
         </div>
 
         {/* Logo Grid */}
 
         <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4">
-
           {partners.map((partner) => (
-
             <div
               key={partner.name}
               className="
@@ -52,7 +47,6 @@ export default function Partners() {
                 hover:shadow-xl
               "
             >
-
               <Image
                 src={partner.logo}
                 alt={partner.name}
@@ -60,19 +54,13 @@ export default function Partners() {
                 height={80}
                 className="
                   object-contain
-                  
                   transition-all
                   duration-500
-                  
                 "
               />
-
             </div>
-
           ))}
-
         </div>
-
       </div>
     </section>
   );

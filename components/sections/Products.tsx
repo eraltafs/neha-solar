@@ -131,7 +131,6 @@ export default function Products() {
                     "
                   >
                     View Details
-
                     <ArrowRight
                       size={18}
                       className="
