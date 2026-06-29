@@ -4,7 +4,7 @@ import { products } from "@/lib/products";
 
 export default function Products() {
   return (
-    <section className="bg-slate-50 py-24">
+    <section className="bg-slate-50 py-12">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
         <div className="mb-16 text-center">

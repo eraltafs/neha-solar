@@ -3,7 +3,7 @@ import { partners } from "@/lib/partners";
 
 export default function Partners() {
   return (
-    <section className="bg-white py-24">
+    <section className="bg-white py-12">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
         <div className="mb-16 text-center">
