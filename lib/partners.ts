@@ -21,11 +21,11 @@ export const partners = [
     },
     {
       name: "Polycab",
-      logo: "/partners/polycab.png",
+      logo: "/partners/Polycab.png",
     },
     {
       name: "Luminous",
-      logo: "/partners/luminous.png",
+      logo: "/partners/Luminous.png",
     },
     {
       name: "Exide",
