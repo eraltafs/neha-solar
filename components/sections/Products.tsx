@@ -17,8 +17,7 @@ export default function Products() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-slate-500">
-            We supply premium quality solar products from India's trusted
-            brands.
+          We supply genuine solar products from India's leading manufacturers, ensuring long-term performance, efficiency and reliability.
           </p>
         </div>
 

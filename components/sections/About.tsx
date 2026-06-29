@@ -29,16 +29,11 @@ export default function About() {
             </h2>
 
             <p className="mt-8 text-lg leading-8 text-slate-600">
-              Neha Solar Suppliers provides premium rooftop solar systems,
-              lithium batteries, tubular batteries, solar panels, inverters,
-              agricultural solar solutions and electrical accessories for
-              residential, commercial and industrial projects.
+            Neha Solar Suppliers is a trusted provider of complete solar energy solutions for residential, commercial and agricultural projects. We supply premium solar panels, inverters, lithium batteries, tubular batteries and all essential accessories.
             </p>
 
             <p className="mt-5 text-lg leading-8 text-slate-600">
-              We work with India's leading brands to deliver reliable,
-              energy-efficient and long-lasting solar solutions backed by
-              professional installation and after-sales support.
+            With trusted brands, expert installation and dependable after-sales support, we help customers reduce electricity costs while embracing clean energy.
             </p>
 
             {/* Small Highlights */}

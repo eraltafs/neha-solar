@@ -7,6 +7,7 @@ import Partners from "@/components/sections/Partners";
 import WhyChoose from "@/components/sections/WhyChooseUs";
 import Testimonials from "@/components/sections/Testimonials";
 import About from "@/components/sections/About";
+import CTA from "@/components/sections/CTA"
 import Footer from "@/components/sections/Footer";
 
 export default function Home() {
@@ -16,11 +17,12 @@ export default function Home() {
       <Hero />
       <Features />
       <About />
+      <Partners />
       <Services />
       <Products />
       <WhyChoose />
       <Testimonials />
-      <Partners />
+      <CTA />
       <Footer /> 
     </>
   );
