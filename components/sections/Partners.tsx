@@ -6,7 +6,6 @@ export default function Partners() {
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
         {/* Heading */}
-
         <div className="mb-16 text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.2em] text-green-600">
             Our Partners
