@@ -34,7 +34,7 @@ export default function Testimonials() {
                 border
                 border-slate-200
                 bg-white
-                p-8
+                p-4
                 shadow-sm
                 transition-all
                 duration-500

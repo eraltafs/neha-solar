@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 
 export default function CTA() {
   return (
-    <section className="relative overflow-hidden py-24">
+    <section className="relative overflow-hidden py-12">
 
       {/* Background */}
 
@@ -92,7 +92,7 @@ export default function CTA() {
 
             {/* RIGHT */}
 
-            <div className="rounded-[32px] bg-white p-8 shadow-2xl">
+            <div className="rounded-[32px] bg-white p-4 shadow-2xl">
 
               <h3 className="text-2xl font-bold text-slate-900">
                 Get Free Consultation
