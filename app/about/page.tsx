@@ -10,23 +10,25 @@ import WorkingProcess from "@/components/about/WorkingProcess";
 import CTA from "@/components/sections/CTA";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
+import FloatingButtons from "@/components/common/FloatingButtons";
+import Team from "@/components/about/Team";
 
 export default function AboutPage() {
   return (
     <>
       <AboutHero />
       <About />
+      <Team />
       <MissionVision />
       <WhyChoose />
       <Partners />
       <WorkingProcess />
       <CTA />
-      
-            <Contact />
-      
-            <Footer /> 
 
+      <Contact />
 
-</>
+      <Footer />
+      <FloatingButtons />
+    </>
   );
 }

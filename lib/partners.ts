@@ -9,7 +9,7 @@ export const partners = [
     },
     {
       name: "Tata Power Solar",
-      logo: "/partners/tata.svg",
+      logo: "/partners/tata-power-solar.png",
     },
     {
       name: "UTL Solar",
