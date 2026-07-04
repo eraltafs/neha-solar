@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function AboutHero() {
   return (
-    <section className="relative overflow-hidden bg-slate-950 py-8">
+    <section className="relative overflow-hidden bg-slate-950 py-4">
 
       {/* Background Image */}
 
@@ -26,7 +26,7 @@ export default function AboutHero() {
       <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-green-500/20 blur-3xl" />
       <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-green-400/10 blur-3xl" />
 
-      <div className="relative mx-auto flex min-h-[88vh] max-w-7xl items-center px-6">
+      <div className="relative mx-auto flex min-h-[88vh] max-w-7xl items-center px-6 ">
 
         <div className="max-w-3xl">
 
@@ -42,7 +42,7 @@ export default function AboutHero() {
 
           {/* Heading */}
 
-          <h1 className="mt-8 text-5xl font-extrabold leading-tight text-white lg:text-7xl">
+          <h1 className=" text-5xl font-extrabold leading-tight text-white lg:text-7xl">
 
             Powering India
             <span className="block text-green-400">
@@ -53,7 +53,7 @@ export default function AboutHero() {
 
           {/* Description */}
 
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-300">
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-300">
 
             Neha Solar Suppliers is your trusted destination for
             premium rooftop solar systems, lithium batteries,
@@ -65,7 +65,7 @@ export default function AboutHero() {
 
           {/* Trust Points */}
 
-          <div className="mt-10 flex flex-wrap gap-6 text-white">
+          <div className="mt-4 flex flex-wrap gap-6 text-white">
 
             <div className="flex items-center gap-2">
 
@@ -95,7 +95,7 @@ export default function AboutHero() {
 
           {/* Buttons */}
 
-          <div className="mt-12 flex flex-wrap gap-4">
+          <div className="mt-2 flex flex-wrap gap-4">
 
             <Link href="/contact">
 

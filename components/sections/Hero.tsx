@@ -28,7 +28,7 @@ export default function Hero() {
             ☀ Trusted Solar Solution Provider
           </span>
 
-          <h1 className="mt-6 text-5xl font-extrabold leading-tight lg:text-7xl">
+          <h1 className="mt-4 text-5xl font-extrabold leading-tight lg:text-7xl">
             Power Your
             <br />
             Future with
