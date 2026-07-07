@@ -3,8 +3,145 @@
 import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function Contact() {
+  const [loading, setLoading] = useState(false);
+
+  const [form, setForm] = useState({
+    name: "",
+    service: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+  });
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+
+    if (name === "phone") {
+      // Sirf digits allow
+      const onlyNumbers = value.replace(/\D/g, "").slice(0, 10);
+
+      setForm((prev) => ({
+        ...prev,
+        phone: onlyNumbers,
+      }));
+
+      return;
+    }
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const validate = () => {
+    const newErrors = {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+    };
+
+    let valid = true;
+
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required";
+      valid = false;
+    }
+
+    if (!form.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+      valid = false;
+    } else if (!/^\d{10}$/.test(form.phone)) {
+      newErrors.phone = "Enter a valid 10 digit mobile number";
+      valid = false;
+    }
+
+    if (!form.message.trim()) {
+      newErrors.message = "Message is required";
+      valid = false;
+    }
+
+    if (!form.service) {
+      newErrors.service = "Please select a service";
+      valid = false;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      newErrors.email = "Enter a valid email";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+
+    return valid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!validate()) return;
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...form,
+          email: "",
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        const text = `New Solar Enquiry
+
+        Name: 
+        ${form.name}
+        Phone: 
+        ${form.phone}
+        email: 
+        ${form.email}
+        service: 
+        ${form.service}
+        Requirement:
+        ${form.message}`;
+
+        window.open(
+          `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
+          "_blank",
+        );
+
+        alert("Enquiry Submitted Successfully");
+
+        setForm({
+          name: "",
+          service: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section className="relative overflow-hidden bg-slate-50 py-12">
       {/* Background */}
@@ -123,40 +260,91 @@ export default function Contact() {
               Fill out the form and our team will contact you shortly.
             </p>
 
-            <form className="mt-8 space-y-5">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full rounded-2xl border p-4 outline-none transition focus:border-green-500"
-              />
+            <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+            <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 outline-none transition-all duration-300 focus:border-green-600 focus:bg-white"
+                />
+                  {errors.name && (
+                  <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+                )}
 
-              <input
-                type="tel"
-                placeholder="Mobile Number"
-                className="w-full rounded-2xl border p-4 outline-none transition focus:border-green-500"
-              />
+<input
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  inputMode="numeric"
+                  maxLength={10}
+                  placeholder="Mobile Number"
+                  className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 outline-none transition-all duration-300 focus:border-green-600 focus:bg-white"
+                />
+                 {errors.phone && (
+                  <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                )}
 
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full rounded-2xl border p-4 outline-none transition focus:border-green-500"
-              />
+<input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Email Address"
+                  className="w-full rounded-2xl border p-4 outline-none transition focus:border-green-500"
+                />
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+                )}
 
-              <input
-                type="text"
-                placeholder="City"
-                className="w-full rounded-2xl border p-4 outline-none transition focus:border-green-500"
-              />
+<div>
+                <label className="mb-2 block text-sm font-semibold text-slate-700">
+                  Service Required
+                </label>
+
+                <select
+                  name="service"
+                  value={form.service}
+                  onChange={handleChange}
+                  className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 text-slate-700 outline-none transition-all duration-300 focus:border-green-600 focus:bg-white"
+                >
+                  <option value="">Select Service</option>
+                  <option value="Solar Panels">Solar Panels</option>
+                  <option value="Solar Inverters">Solar Inverters</option>
+                  <option value="Lithium Batteries">Lithium Batteries</option>
+                  <option value="Tubular Batteries">Tubular Batteries</option>
+                  <option value="Commercial Solar">Commercial Solar</option>
+                  <option value="Agriculture Solar Pump">
+                    Agriculture Solar Pump
+                  </option>
+                  <option value="Solar Installation">Solar Installation</option>
+                  <option value="AMC & Maintenance">AMC & Maintenance</option>
+                </select>
+
+                {errors.service && (
+                  <p className="mt-1 text-sm text-red-500">{errors.service}</p>
+                )}
+              </div>
 
               <textarea
+                name="message"
                 rows={5}
+                value={form.message}
+                onChange={handleChange}
                 placeholder="Tell us about your requirement..."
-                className="w-full rounded-2xl border p-4 outline-none transition focus:border-green-500"
+                className="min-h-[140px] w-full rounded-2xl border border-slate-200 bg-slate-50 p-5 outline-none transition-all duration-300 focus:border-green-600 focus:bg-white"
               />
 
-              <Button className="h-12 w-full bg-green-600 text-base hover:bg-green-700">
-                <Send className="mr-2 h-5 w-5" />
-                Get Free Quote
+              {errors.message && (
+                <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+              )}
+
+              <Button
+                type="submit"
+                disabled={loading}
+                className="h-12 w-full bg-green-600 text-lg hover:bg-green-700 disabled:opacity-60"
+              >
+                {loading ? "Submitting..." : "Submit Enquiry"}
               </Button>
             </form>
           </div>

@@ -13,10 +13,72 @@ export default function Hero() {
     phone: "",
     message: "",
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    phone: "",
+    message: "",
+  });
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
 
+    if (name === "phone") {
+      // Sirf digits allow
+      const onlyNumbers = value.replace(/\D/g, "").slice(0, 10);
+
+      setForm((prev) => ({
+        ...prev,
+        phone: onlyNumbers,
+      }));
+
+      return;
+    }
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const validate = () => {
+    const newErrors = {
+      name: "",
+
+      phone: "",
+      service: "",
+      message: "",
+    };
+
+    let valid = true;
+
+    if (!form.name.trim()) {
+      newErrors.name = "Name is required";
+      valid = false;
+    }
+
+    if (!form.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+      valid = false;
+    } else if (!/^\d{10}$/.test(form.phone)) {
+      newErrors.phone = "Enter a valid 10 digit mobile number";
+      valid = false;
+    }
+
+    if (!form.message.trim()) {
+      newErrors.message = "Message is required";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+
+    return valid;
+  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    if (!validate()) return;
     setLoading(true);
 
     try {
@@ -36,9 +98,10 @@ export default function Hero() {
       if (data.success) {
         const text = `New Solar Enquiry
 
-Name: ${form.name}
-Phone: ${form.phone}
-
+Name: 
+${form.name}
+Phone: 
+${form.phone}
 Requirement:
 ${form.message}`;
 
@@ -146,44 +209,42 @@ ${form.message}`;
           </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={form.name}
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  name: e.target.value,
-                })
-              }
-              className="w-full rounded-xl border p-4 outline-none focus:border-green-600"
-            />
+          <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Your Name"
+                  className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 outline-none transition-all duration-300 focus:border-green-600 focus:bg-white"
+                />
+                  {errors.name && (
+                  <p className="mt-1 text-sm text-red-500">{errors.name}</p>
+                )}
 
-            <input
-              type="tel"
-              placeholder="Mobile Number"
-              value={form.phone}
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  phone: e.target.value,
-                })
-              }
-              className="w-full rounded-xl border p-4 outline-none focus:border-green-600"
-            />
+<input
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  inputMode="numeric"
+                  maxLength={10}
+                  placeholder="Mobile Number"
+                  className="h-14 w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 outline-none transition-all duration-300 focus:border-green-600 focus:bg-white"
+                />
+                 {errors.phone && (
+                  <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                )}
 
-            <textarea
-              rows={4}
-              placeholder="Tell us your requirement..."
-              value={form.message}
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  message: e.target.value,
-                })
-              }
-              className="w-full rounded-xl border p-4 outline-none focus:border-green-600"
-            />
+<textarea
+                name="message"
+                rows={5}
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Tell us about your requirement..."
+                className="min-h-[140px] w-full rounded-2xl border border-slate-200 bg-slate-50 p-5 outline-none transition-all duration-300 focus:border-green-600 focus:bg-white"
+              />
+
+              {errors.message && (
+                <p className="mt-1 text-sm text-red-500">{errors.message}</p>
+              )}
 
             <Button
               type="submit"
