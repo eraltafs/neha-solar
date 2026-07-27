@@ -58,9 +58,7 @@ export default function Testimonials() {
 
               {/* Review */}
 
-              <p className="mb-8 leading-8 text-slate-600">
-                "{item.review}"
-              </p>
+              <p className="mb-8 leading-8 text-slate-600">"{item.review}"</p>
 
               {/* User */}
 
@@ -70,19 +68,15 @@ export default function Testimonials() {
                 </div>
 
                 <div>
-                  <h4 className="font-semibold text-slate-900">
-                    {item.name}
-                  </h4>
+                  <h4 className="font-semibold text-slate-900">{item.name}</h4>
 
-                  <p className="text-sm text-slate-500">
-                    {item.role}
-                  </p>
+                  <p className="text-sm text-slate-500">{item.role}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-              <div className="mt-4 rounded-[32px] border border-slate-200 bg-gradient-to-r from-green-600 to-green-700 p-6 text-white shadow-2xl">
+        <div className="mt-4 rounded-[32px] border border-slate-200 bg-gradient-to-r from-green-600 to-green-700 p-6 text-white shadow-2xl">
           <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
             <div>
               <div className="flex items-center gap-2">
