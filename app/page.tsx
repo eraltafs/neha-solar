@@ -11,6 +11,7 @@ import Footer from "@/components/sections/Footer";
 import Contact from "@/components/sections/Contact";
 import FloatingButtons from "@/components/common/FloatingButtons";
 
+
 export default function Home() {
   return (
     <>

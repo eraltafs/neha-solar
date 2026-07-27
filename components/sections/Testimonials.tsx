@@ -1,5 +1,6 @@
-import { Star } from "lucide-react";
+import { Star, ArrowUpRight, BadgeCheck } from "lucide-react";
 import { testimonials } from "@/lib/testimonials";
+import { Button } from "@/components/ui/button";
 
 export default function Testimonials() {
   return (
@@ -80,6 +81,59 @@ export default function Testimonials() {
               </div>
             </div>
           ))}
+        </div>
+              <div className="mt-4 rounded-[32px] border border-slate-200 bg-gradient-to-r from-green-600 to-green-700 p-6 text-white shadow-2xl">
+          <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
+            <div>
+              <div className="flex items-center gap-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <Star
+                    key={i}
+                    className="h-5 w-5 fill-yellow-300 text-yellow-300"
+                  />
+                ))}
+              </div>
+
+              <h3 className="mt-4 text-5xl font-bold">
+                4.9<span className="text-3xl">/5</span>
+              </h3>
+
+              <p className="mt-3 text-green-100">
+                Rated by 500+ Happy Customers
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-4">
+                <div className="flex items-center gap-2">
+                  <BadgeCheck className="h-5 w-5" />
+                  Genuine Products
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <BadgeCheck className="h-5 w-5" />
+                  Professional Installation
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <BadgeCheck className="h-5 w-5" />
+                  Trusted Support
+                </div>
+              </div>
+            </div>
+
+            <a
+              href="https://maps.app.goo.gl/eG4ZpDBam8W3WgTg9"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button
+                size="lg"
+                className="rounded-full bg-white px-8 py-7 text-lg font-semibold text-green-700 hover:bg-slate-100"
+              >
+                Write a Google Review
+                <ArrowUpRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
     </section>

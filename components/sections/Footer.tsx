@@ -1,8 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
-import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 
+const socialLinks = [
+  {
+    icon: FaFacebookF,
+    href: "https://www.facebook.com/people/Neha-Solar-Supplier/61592327161525/",
+    label: "Facebook",
+  },
+  {
+    icon: FaInstagram,
+    href: "https://www.instagram.com/nehasolarsupplier_",
+    label: "Instagram",
+  },
+  {
+    icon: FaLinkedinIn,
+    href: "https://www.linkedin.com/in/neha-solar-supplier-53896a361/",
+    label: "LinkedIn",
+  },
+  {
+    icon: FaYoutube,
+    href: "https://www.youtube.com/@nehasolarsuppliersnehasolarsup",
+    label: "YouTube",
+  },
+];
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-300">
@@ -37,13 +59,19 @@ export default function Footer() {
             {/* Social */}
 
             <div className="mt-8 flex gap-3">
-              {[FaFacebookF, FaInstagram, FaLinkedinIn].map((Icon, index) => (
+              {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
-                  key={index}
-                  href="#"
-                  className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 transition hover:border-green-500 hover:bg-green-600 hover:text-white"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="group flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 text-slate-300 transition-all duration-300 hover:-translate-y-1 hover:border-green-500 hover:bg-green-600 hover:text-white hover:shadow-lg hover:shadow-green-600/30"
                 >
-                  <Icon size={18} />
+                  <Icon
+                    size={18}
+                    className="transition-transform duration-300 group-hover:scale-110"
+                  />
                 </a>
               ))}
             </div>
@@ -57,23 +85,20 @@ export default function Footer() {
             </h4>
 
             <div className="space-y-4">
-              {["Home", "About", "Services", "Contact"].map(
-                (item) => (
+              {["Home", "About", "Services", "Contact"].map((item) => (
+                <Link
+                  key={item}
+                  href={`/${item.toLocaleLowerCase()}`}
+                  className="group flex items-center gap-2 transition hover:text-green-500"
+                >
+                  <ArrowUpRight
+                    size={16}
+                    className="transition group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
 
-                  <Link
-                    key={item}
-                    href={`/${item.toLocaleLowerCase()}`}
-                    className="group flex items-center gap-2 transition hover:text-green-500"
-                  >
-                    <ArrowUpRight
-                      size={16}
-                      className="transition group-hover:translate-x-1 group-hover:-translate-y-1"
-                    />
-
-                    {item}
-                  </Link>
-                ),
-              )}
+                  {item}
+                </Link>
+              ))}
             </div>
           </div>
 
