@@ -47,7 +47,7 @@ export default function ContactHero() {
 
               {[
                 "Free Consultation",
-                "Site Visit Available",
+                "Free Site Visit Available",
                 "Government Subsidy Guidance",
                 "Best Market Pricing",
               ].map((item) => (
